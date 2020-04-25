@@ -3,11 +3,13 @@ const express = require('express'),
 const app = express();
 
 app.use(morgan('common'));
-app.use('/', express.static('public'));
+app.use(express.static('public'));
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
+
+let __dirname = path.resolve();
 
 let topMovies = [
   {
@@ -53,11 +55,7 @@ let topMovies = [
 ]
 
 app.get('/', (req, res) => {
-  res.send('Welcome to my app!');
-});
-
-app.get('/documentation', (req, res) => {
-  res.sendFile('/documentation.html', { root: __dirname });
+  res.send('Welcome to my movies API!');
 });
 
 app.get('/movies', (req, res) => {
