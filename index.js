@@ -4,10 +4,6 @@ const app = express();
 
 app.use(morgan('common'));
 app.use(express.static('public'));
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
 
 let __dirname = path.resolve();
 
@@ -54,13 +50,14 @@ let topMovies = [
   }
 ]
 
-app.get('/', (req, res) => {
-  res.send('Welcome to my movies API!');
-});
-
 app.get('/movies', (req, res) => {
   res.json(topMovies);
 })
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 app.listen(8080, () => {
   console.log('App is listening on port 8080.');
