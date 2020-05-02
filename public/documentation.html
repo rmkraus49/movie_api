@@ -8,8 +8,153 @@
 </head>
 
 <body>
-<h1>Documentation</h1>
-<h3>Movie API</h3>
+<h1>Movie API Documentation</h1>
 <p>Welcome - this API provides details on a collection of films.</p>
+
+<section id="Contents">
+<h2>Contents</h2>
+<ul>
+  <li><a href="#Movies-Endpoints">Movies Endpoints</a></li>
+  <li><a href="#Genres-Endpoints">Genres Endpoints</a></li>
+  <li><a href="#Directors-Endpoints">Directors Endpoints</a></li>
+  <li><a href="#Users-Endpoints">Users Endpoints</a></li>
+</ul>
+</section>
+
+<section id="Movies-Endpoints">
+  <h2>Movies Endpoints</h2>
+
+  <h3>Get All Movies</h3>
+  <p>This endpoint returns a full list of movies in the database.</p>
+  <ul>
+    <li>URL: /movies</li>
+    <li>Method: GET</li>
+    <li>Query Parameters: N/A</li>
+    <li>Expected Body Format: N/A</li>
+    <li>Response Format: JSON</li>
+  </ul>
+
+  <h3>Get Movie by Title</h3>
+  <p>This endpoint returns details about a given movie by title.</p>
+  <ul>
+    <li>URL: /movies/:title</li>
+    <li>Method: GET</li>
+    <li>Query Parameters: Title (String)</li>
+    <li>Expected Body Format: N/A</li>
+    <li>Response Format: JSON</li>
+  </ul>
+
+  <h3>Post New Movie</h3>
+  <p>This endpoint posts a new movie.</p>
+  <ul>
+    <li>URL: /movies/:title</li>
+    <li>Method: POST</li>
+    <li>Query Parameters: Title (String)</li>
+    <li>Expected Body Format: JSON</li>
+    <li>Response Format: JSON</li>
+  </ul>
+
+  <h3>Update Existing Movie</h3>
+  <p>This endpoint updates an existing move, identified by title.</p>
+  <ul>
+    <li>URL: /movies/:title</li>
+    <li>Method: PUT</li>
+    <li>Query Parameters: Title (String)</li>
+    <li>Expected Body Format: JSON</li>
+    <li>Response Format: JSON</li>
+  </ul>
+
+  <h3>Delete Existing Movie</h3>
+  <p>This endpoint deletes an existing move, identified by title.</p>
+  <ul>
+    <li>URL: /movies/:title</li>
+    <li>Method: DELETE</li>
+    <li>Query Parameters: Title (String)</li>
+    <li>Expected Body Format: N/A</li>
+    <li>Response Format: JSON</li>
+  </ul>
+</section>
+
+<section id="Genres-Endpoints">
+  <h2>Genres Endpoints</h2>
+
+  <h3>Get Genre Information</h3>
+  <p>This endpoint gets a description about a genre, identified by name.</p>
+  <ul>
+    <li>URL: /genres/:name</li>
+    <li>Method: GET</li>
+    <li>Query Parameters: Name (String)</li>
+    <li>Expected Body Format: N/A</li>
+    <li>Response Format: JSON</li>
+  </ul>
+</section>
+
+<section id="Directors-Endpoints">
+  <h2>Directors Endpoints</h2>
+
+  <h3>Get Director Information</h3>
+  <p>This endpoint gets information about a given director, identified by name.</p>
+  <ul>
+    <li>URL: /directors/:name</li>
+    <li>Method: GET</li>
+    <li>Query Parameters: Name (String)</li>
+    <li>Expected Body Format: N/A</li>
+    <li>Response Format: JSON</li>
+  </ul>
+</section>
+
+<section id="Users-Endpoints">
+  <h2>Users Endpoints</h2>
+
+  <h3>Get User Information</h3>
+  <p>This endpoint gets information about a given user, identified by name.</p>
+  <ul>
+    <li>URL: /users/:name</li>
+    <li>Method: GET</li>
+    <li>Query Parameters: Name (String)</li>
+    <li>Expected Body Format: N/A</li>
+    <li>Response Format: JSON</li>
+  </ul>
+
+  <h3>Create New User</h3>
+  <p>This endpoint adds a new user.</p>
+  <ul>
+    <li>URL: /users/:name</li>
+    <li>Method: POST</li>
+    <li>Query Parameters: Name (String)</li>
+    <li>Expected Body Format: JSON</li>
+    <li>Response Format: JSON</li>
+  </ul>
+
+  <h3>Update User Details</h3>
+  <p>This endpoint updates details about an existing user, identified by name.</p>
+  <ul>
+    <li>URL: /users/:name</li>
+    <li>Method: PUT</li>
+    <li>Query Parameters: Name (String)</li>
+    <li>Expected Body Format: JSON</li>
+    <li>Response Format: JSON</li>
+  </ul>
+
+  <h3>Add Movie to a User's Favorites</h3>
+  <p>This endpoint adds a new title to a user's list of favorite movies.</p>
+  <ul>
+    <li>URL: /users/:name/:title</li>
+    <li>Method: PUT</li>
+    <li>Query Parameters: Name (The user's name; format: string); Title (The title of the movie to be added to the user's favorites; format: string)</li>
+    <li>Expected Body Format: JSON</li>
+    <li>Response Format: JSON</li>
+  </ul>
+
+  <h3>Delete a User</h3>
+  <p>This endpoint deletes an existing user, identified by name.</p>
+  <ul>
+    <li>URL: /users/:name</li>
+    <li>Method: DELETE</li>
+    <li>Query Parameters: Name (String)</li>
+    <li>Expected Body Format: N/A</li>
+    <li>Response Format: JSON</li>
+  </ul>
+</section>
 
 </html>

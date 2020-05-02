@@ -9,7 +9,7 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!');
 });
 
-let __dirname = path.resolve();
+// let __dirname = path.resolve();
 
 let topMovies = [
   {
@@ -54,12 +54,67 @@ let topMovies = [
   }
 ]
 
-app.get('/', (req, res) => {
-  res.send('Welcome to my movies API!');
+// get pages - index and documentation
+app.get('/documentation', (req, res) => {
+  res.sendFile('public/documentation.html', { root: __dirname });
 });
 
+app.get('/index', (req, res) => {
+  res.sendFile('public/index.html', { root: __dirname });
+});
+
+// movies routing
 app.get('/movies', (req, res) => {
   res.json(topMovies);
+});
+
+app.get('/movies/:title', (req, res) => {
+  res.json(topMovies.find((movie) => {
+    return movie.title === req.params.title
+  }));
+});
+
+app.post('/movies/:title', (req, res) => {
+  res.send('post a new movie');
+});
+
+app.put('/movies/:title', (req, res) => {
+  res.send('update an existing movie by title');
+});
+
+app.delete('/movies/:title', (req, res) => {
+  res.send('delete ' + req.params.title);
+});
+
+// genres routing
+app.get('/genres/:name', (req, res) => {
+  res.send('get a detailed description of the ' + req.params.name + ' genre');
+});
+
+// directors routing
+app.get('/directors/:name', (req, res) => {
+  res.send('get details about the director ' + req.params.name);
+});
+
+// users routing
+app.get('/users/:name', (req, res) => {
+  res.send('get details about the user ' + req.params.name);
+});
+
+app.post('/users/:name', (req, res) => {
+  res.send('post a new user named ' + req.params.name);
+});
+
+app.put('/users/:name', (req, res) => {
+  res.send('update an existing user named ' + req.params.name);
+});
+
+app.put('/users/:name/:title', (req, res) => {
+  res.send('add a movie titled ' + req.params.title + ' to ' + req.params.name + '\'s list of favorites');
+});
+
+app.delete('/users/:name', (req, res) => {
+  res.send('delete ' + req.params.name + '\'s user information');
 });
 
 app.listen(8080, () => {
