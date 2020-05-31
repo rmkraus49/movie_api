@@ -16,7 +16,9 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 
-mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('connected to mongo DB')).catch((err) => console.error('could not connect to mongo db', err));
+// mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('connected to mongo DB')).catch((err) => console.error('could not connect to mongo db', err));
+console.log(process.env.CONNECTION_URI);
+mongoose.connect('mongodb+srv://rmkraus49:mongoPassword@mycluster-z5gst.azure.mongodb.net/myFlixDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('connected to mongo DB')).catch((err) => console.error('could not connect to mongo db', err));
 
 // Middleware
 app.use(morgan('common'));
@@ -164,7 +166,7 @@ app.get('/users/:Username', passport.authenticate('jwt', { session: false }), (r
 });
 
 // add a new user
-app.post('/users', passport.authenticate('jwt', { session: false }),
+app.post('/users',
   [
     check('Username', 'Username is required.').isLength({ min: 5 }),
     check('Username', 'Username contains non-alphanumeric characters.').isAlphanumeric(),
