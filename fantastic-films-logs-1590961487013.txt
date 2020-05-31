@@ -1,0 +1,10 @@
+2020-05-31T21:43:50.200393+00:00 app[web.1]:     at Mongoose.connect (/app/node_modules/mongoose/lib/index.js:333:15)
+2020-05-31T21:43:50.200394+00:00 app[web.1]:     at Object.<anonymous> (/app/index.js:21:10)
+2020-05-31T21:43:50.200394+00:00 app[web.1]:     at Module._compile (internal/modules/cjs/loader.js:1138:30)
+2020-05-31T21:43:50.200394+00:00 app[web.1]:     at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+2020-05-31T21:43:50.200395+00:00 app[web.1]:     at Module.load (internal/modules/cjs/loader.js:986:32)
+2020-05-31T21:43:50.200395+00:00 app[web.1]:     at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+2020-05-31T21:43:50.200396+00:00 app[web.1]:     at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:71:12)
+2020-05-31T21:43:50.399042+00:00 heroku[web.1]: State changed from starting to up
+2020-05-31T21:44:20.864459+00:00 heroku[router]: at=error code=H12 desc="Request timeout" method=GET path="/movies" host=fantastic-films.herokuapp.com request_id=b0c44e49-2c00-4d74-8f03-e92281ea3108 fwd="104.238.32.66" dyno=web.1 connect=10ms service=30000ms status=503 bytes=0 protocol=https
+2020-05-31T21:44:20.867830+00:00 app[web.1]: 10.63.127.111 - - [31/May/2020:21:44:20 +0000] "GET /movies HTTP/1.1" - -
