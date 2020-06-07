@@ -16,8 +16,7 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 
-// mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('connected to mongo DB')).catch((err) => console.error('could not connect to mongo db', err));
-mongoose.connect('mongodb+srv://rmkraus49:mongoPassword@mycluster-z5gst.azure.mongodb.net/myFlixDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('connected to mongo DB')).catch((err) => console.error('could not connect to mongo db', err));
+mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('connected to mongo DB')).catch((err) => console.error('could not connect to mongo db', err));
 
 // Middleware
 app.use(morgan('common'));
@@ -167,7 +166,7 @@ app.get('/users/:Username', passport.authenticate('jwt', { session: false }), (r
 // add a new user
 app.post('/users',
   [
-    check('Username', 'Username is required.').isLength({ min: 5 }),
+    check('Username', 'Username is required and must be at least five characters in length.').isLength({ min: 5 }),
     check('Username', 'Username contains non-alphanumeric characters.').isAlphanumeric(),
     check('Password', 'Password is required.').not().isEmpty(),
     check('Email', 'Email does not appear to be valid.').isEmail(),
@@ -204,26 +203,36 @@ app.post('/users',
   });
 
 // update user info by Username
-app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
-  Users.findOneAndUpdate({ Username: req.params.Username }, {
-    $set:
-      {
-        Username: req.body.Username,
-        Password: req.body.Password,
-        Email: req.body.Email,
-        Birthday: req.body.Birthday,
-      },
-  },
-  { new: true },
-  (err, updatedUser) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send(`Error: ${err}`);
-    } else {
-      res.json(updatedUser);
+app.put('/users/:Username',
+  [
+    check('NewUsername', 'Username must be alphanumeric.').isAlphanumeric(),
+    check('NewUsername', 'Username is required and must be at least five characters in length.').isLength({ min: 5 }),
+    check('NewEmail', 'Not a valid email address.').isEmail(),
+  ],
+  passport.authenticate('jwt', { session: false }), (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
     }
+    Users.findOneAndUpdate({ Username: req.params.Username }, {
+      $set:
+        {
+          Username: req.body.NewUsername,
+          Password: req.body.NewPassword,
+          Email: req.body.NewEmail,
+          Birthday: req.body.NewBirthday,
+        },
+    },
+    { new: true },
+    (err, updatedUser) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send(`Error: ${err}`);
+      } else {
+        res.json(updatedUser);
+      }
+    });
   });
-});
 
 // add movie to a user's favorites, by username & movie ID
 app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
