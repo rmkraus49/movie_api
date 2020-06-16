@@ -1,23 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 
-class MainView extends React.Component {
+export class MainView extends React.Component {
   constructor() {
     super();
     this.state = {};
   }
 
-  render() {
-    return (
-      <div className="main-view"></div>
-    );
-  }
-}
-
-export class MainView extends React.Component {
   componentDidMount() {
-    axios.get('<my-api-endpoint/movies>')
-      .then(response => {
+    axios.get('https://fantastic-films.herokuapp.com/movies')
+      .then((response) => {
         this.setState({
           movies: response.data
         });
@@ -29,6 +21,10 @@ export class MainView extends React.Component {
 
   render() {
     const { movies } = this.state;
+    console.log(this.state);
+    console.log(movies);
+
+
     if (!movies) return <div className="main-view" />;
 
     return (

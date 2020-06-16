@@ -16,7 +16,7 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 
-mongoose.connect(process.env.CONNECTION_URI, {
+mongoose.connect('mongodb+srv://rmkraus49:mongoPassword@mycluster-z5gst.azure.mongodb.net/myFlixDB?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -33,7 +33,7 @@ app.use((err, req, res, next) => {
 });
 
 // CORS
-const allowedOrigins = ['http://localhost:8080'];
+const allowedOrigins = ['*'];
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
