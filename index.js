@@ -16,7 +16,12 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 
-mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('connected to mongo DB')).catch((err) => console.error('could not connect to mongo db', err));
+mongoose.connect(process.env.CONNECTION_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('connected to mongo DB'))
+  .catch((err) => console.error('could not connect to mongo db', err));
 
 // Middleware
 app.use(morgan('common'));
