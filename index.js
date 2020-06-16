@@ -52,7 +52,7 @@ app.get('/index', (req, res) => {
 
 // MOVIES ROUTING
 // get all movies
-app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.get('/movies', (req, res) => {
   Movies.find()
     .then((movies) => {
       res.status(200).json(movies);
@@ -216,22 +216,22 @@ app.put('/users/:Username',
     }
     Users.findOneAndUpdate({ Username: req.params.Username }, {
       $set:
-        {
-          Username: req.body.NewUsername,
-          Password: req.body.NewPassword,
-          Email: req.body.NewEmail,
-          Birthday: req.body.NewBirthday,
-        },
+      {
+        Username: req.body.NewUsername,
+        Password: req.body.NewPassword,
+        Email: req.body.NewEmail,
+        Birthday: req.body.NewBirthday,
+      },
     },
-    { new: true },
-    (err, updatedUser) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send(`Error: ${err}`);
-      } else {
-        res.json(updatedUser);
-      }
-    });
+      { new: true },
+      (err, updatedUser) => {
+        if (err) {
+          console.error(err);
+          res.status(500).send(`Error: ${err}`);
+        } else {
+          res.json(updatedUser);
+        }
+      });
   });
 
 // add movie to a user's favorites, by username & movie ID
