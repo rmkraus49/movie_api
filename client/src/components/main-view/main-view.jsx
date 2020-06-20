@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { MovieCard } from '../movie-card/movie-card';
 
 export class MainView extends React.Component {
   constructor() {
@@ -21,16 +22,14 @@ export class MainView extends React.Component {
 
   render() {
     const { movies } = this.state;
-    console.log(this.state);
-    console.log(movies);
 
-
+    // runs before the movies have been loaded
     if (!movies) return <div className="main-view" />;
 
     return (
       <div className="main-view">
         {movies.map(movie => (
-          <div className="movie-card" key={movie._id}>{movie.Title}</div>
+          <MovieCard key={movie._id} movie={movie} />
         ))}
       </div>
     );
