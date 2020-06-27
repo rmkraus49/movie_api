@@ -1,0 +1,18 @@
+$background-grey: #eee;
+$secondary-grey: #aeaeae;
+$light: #f8f9fa;
+
+body {
+  background-color: $background-grey;
+}
+
+.basic-nav {
+  background-color: $light;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+.main-view {
+  margin-top: 30px;
+}

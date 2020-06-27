@@ -15,7 +15,7 @@ export class MovieView extends React.Component {
 
     return (
       <div className="movie-view">
-        <img className="movie-poster" src="{movie.ImagePath}" />
+        <img className="movie-poster" src={movie.ImagePath} />
         <div className="movie-title">
           <span className="label">Title: </span>
           <span className="value">{movie.Title}</span>
@@ -32,8 +32,8 @@ export class MovieView extends React.Component {
           <span className="label">Director: </span>
           <span className="value">{movie.Director.Name}</span>
         </div>
-        <div onClick={() => onClick()} className="close-button">
-          <button>Close</button>
+        <div>
+          <button onClick={() => onClick()} className="close-button">Close</button>
         </div>
 
       </div>
