@@ -33,7 +33,7 @@ app.use((err, req, res, next) => {
 });
 
 // CORS
-const allowedOrigins = ['http://localhost:8080', 'http://localhost:1234'];
+const allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', '*'];
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
