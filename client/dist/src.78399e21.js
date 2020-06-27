@@ -45919,10 +45919,13 @@ function LoginView(props) {
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
+    console.log(username, password);
 
-    _axios.default.post('https://fantastic-films.herokuapp.com/login', {
-      Username: username,
-      Password: password
+    _axios.default.post('https://fantastic-films.herokuapp.com/login', null, {
+      params: {
+        Username: username,
+        Password: password
+      }
     }).then(function (response) {
       var data = response.data;
       props.onLoggedIn(data);
@@ -46193,12 +46196,33 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "getMovies",
+    value: function getMovies(token) {
+      var _this3 = this;
+
+      _axios.default.get('https://fantastic-films.herokuapp.com/movies', {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function (response) {
+        _this3.setState({
+          movies: response.data
+        });
+      }).catch(function (error) {
+        console.log(errro);
+      });
+    }
+  }, {
     key: "onLoggedIn",
-    value: function onLoggedIn(user) {
+    value: function onLoggedIn(authData) {
+      console.log(authData);
       this.setState({
-        user: user,
+        user: authData.user.Username,
         loginView: null
       });
+      localStorage.setItem('token', authData.token);
+      localStorage.setItem('user', authData.user.Username);
+      this.getMovies(authData.token);
     }
   }, {
     key: "onRegisterClick",
@@ -46238,7 +46262,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var _this$state = this.state,
           movies = _this$state.movies,
@@ -46248,18 +46272,18 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           registerView = _this$state.registerView;
       if (loginView) return _react.default.createElement(_loginView.LoginView, {
         onLoggedIn: function onLoggedIn(user) {
-          return _this3.onLoggedIn(user);
+          return _this4.onLoggedIn(user);
         },
         onCancelLogin: function onCancelLogin() {
-          return _this3.onCancelLogin();
+          return _this4.onCancelLogin();
         }
       });
       if (registerView) return _react.default.createElement(_registrationView.RegistrationView, {
         onRegister: function onRegister(user) {
-          return _this3.onRegister(user);
+          return _this4.onRegister(user);
         },
         onCancelRegister: function onCancelRegister() {
-          return _this3.onCancelRegister();
+          return _this4.onCancelRegister();
         }
       }); // runs before the movies have been loaded
 
@@ -46271,7 +46295,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_movieView.MovieView, {
         movie: selectedMovie,
         onClick: function onClick() {
-          return _this3.onCloseClick();
+          return _this4.onCloseClick();
         }
       }));
       return _react.default.createElement("section", null, _react.default.createElement(_reactBootstrap.Navbar, {
@@ -46285,11 +46309,11 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         id: "basic-navbar-nav"
       }, _react.default.createElement(_reactBootstrap.Nav, null, _react.default.createElement(_reactBootstrap.Nav.Link, {
         onClick: function onClick() {
-          return _this3.onRegisterClick();
+          return _this4.onRegisterClick();
         }
       }, "Register"), _react.default.createElement(_reactBootstrap.Nav.Link, {
         onClick: function onClick() {
-          return _this3.onLogInClick();
+          return _this4.onLogInClick();
         }
       }, "Log in")))), _react.default.createElement("div", {
         className: "main-view"
@@ -46298,7 +46322,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           key: movie._id,
           movie: movie,
           onClick: function onClick(movie) {
-            return _this3.onMovieClick(movie);
+            return _this4.onMovieClick(movie);
           }
         });
       })))));
@@ -46417,7 +46441,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65327" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50362" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

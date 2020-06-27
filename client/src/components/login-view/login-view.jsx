@@ -9,16 +9,19 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('https://fantastic-films.herokuapp.com/login', {
-      Username: username,
-      Password: password,
+    console.log(username, password);
+    axios.post('https://fantastic-films.herokuapp.com/login', null, {
+      params: {
+        Username: username,
+        Password: password,
+      }
     })
       .then(response => {
         const data = response.data;
         props.onLoggedIn(data);
       })
       .catch(e => {
-        console.log('no such user')
+        console.log('no such user');
       });
   };
 
