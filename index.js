@@ -33,7 +33,7 @@ app.use((err, req, res, next) => {
 });
 
 // CORS
-const allowedOrigins = ['http://localhost:8080', 'http://localhost:1234'];
+const allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', '*'];
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
@@ -57,7 +57,7 @@ app.get('/index', (req, res) => {
 
 // MOVIES ROUTING
 // get all movies
-app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.get('/movies', (req, res) => {
   Movies.find()
     .then((movies) => {
       res.status(200).json(movies);
@@ -219,11 +219,12 @@ app.put('/users/:Username',
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
+    const hashedPassword = Users.hashPassword(req.body.Password);
     Users.findOneAndUpdate({ Username: req.params.Username }, {
       $set:
       {
         Username: req.body.NewUsername,
-        Password: req.body.NewPassword,
+        Password: hashedPassword,
         Email: req.body.NewEmail,
         Birthday: req.body.NewBirthday,
       },

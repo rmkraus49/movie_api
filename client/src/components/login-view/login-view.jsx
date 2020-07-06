@@ -9,7 +9,6 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
     axios.post('https://fantastic-films.herokuapp.com/login', null, {
       params: {
         Username: username,
@@ -23,12 +22,6 @@ export function LoginView(props) {
       .catch(e => {
         console.log('no such user');
       });
-  };
-
-  const cancelLogin = (e) => {
-    e.preventDefault();
-    console.log("login cancelled");
-    props.onCancelLogin();
   };
 
   return (
@@ -45,7 +38,7 @@ export function LoginView(props) {
         <Button variant="primary" type="submit" onClick={handleSubmit}>
           Submit
         </Button>
-        <Button variant="secondary" type="submit" onClick={cancelLogin}>
+        <Button variant="secondary" type="submit" href="/">
           Cancel
         </Button>
       </Form>

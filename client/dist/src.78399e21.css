@@ -22,6 +22,10 @@ body {
 .main-view {
   margin-top: 30px;
 }
+
+.welcome-button {
+  margin: 0px 15px 0px 0px;
+}
 .my-flix {
   color: steelblue;
 }
