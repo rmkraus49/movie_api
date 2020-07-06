@@ -48918,6 +48918,16 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.MovieView = MovieView;
+MovieView.propTypes = {
+  movie: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired,
+    Director: PropTypes.string.isRequired,
+    Genre: PropTypes.string.isRequired
+  }),
+  onClick: PropTypes.func
+};
 },{"react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","../movie-view/movie-view.scss":"components/movie-view/movie-view.scss"}],"components/login-view/login-view.jsx":[function(require,module,exports) {
 "use strict";
 
@@ -49230,6 +49240,12 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.DirectorView = DirectorView;
+DirectorView.propTypes = {
+  director: PropTypes.shape({
+    Name: PropTypes.string.isRequired,
+    Bio: PropTypes.string.isRequired
+  })
+};
 },{"react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","../director-view/director-view.scss":"components/director-view/director-view.scss"}],"components/genre-view/genre-view.jsx":[function(require,module,exports) {
 "use strict";
 
@@ -49308,6 +49324,10 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.GenreView = GenreView;
+GenreView.propTypes = {
+  Name: PropTypes.string.isRequired,
+  Description: PropTypes.string.isRequired
+};
 },{"react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","../director-view/director-view.scss":"components/director-view/director-view.scss"}],"components/profile-view/profile-view.jsx":[function(require,module,exports) {
 "use strict";
 
