@@ -47,7 +47,7 @@ export class ProfileView extends React.Component {
         console.log('logout start');
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        window.open('/', '_self')
+        window.open('/client', '_self')
       })
       .catch((error) => {
         console.log(error);

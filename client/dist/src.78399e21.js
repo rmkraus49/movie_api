@@ -51573,7 +51573,7 @@ function RegistrationView(props) {
         var data = response.data;
         console.log(data);
         props.onLoggedIn(data);
-        window.open('/', '_self');
+        window.open('/client', '_self');
       }).catch(function (e) {
         console.log('error logging in');
       });
@@ -51906,7 +51906,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         console.log('logout start');
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        window.open('/', '_self');
+        window.open('/client', '_self');
       }).catch(function (error) {
         console.log(error);
       });
@@ -52165,7 +52165,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       localStorage.setItem('token', authData.token);
       localStorage.setItem('user', authData.user.Username);
       this.getMovies(authData.token);
-      window.open('/profile', '_self');
+      window.open('/client/profile', '_self');
     }
   }, {
     key: "logout",
@@ -52187,7 +52187,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
-      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_reactBootstrap.Navbar, {
+      return _react.default.createElement(_reactRouterDom.BrowserRouter, {
+        basename: "/client"
+      }, _react.default.createElement(_reactBootstrap.Navbar, {
         expand: "lg",
         className: "navbar basic-nav"
       }, _react.default.createElement(_reactBootstrap.Navbar.Brand, {
@@ -52504,7 +52506,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63832" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50744" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -52681,4 +52683,4 @@ function hmrAcceptRun(bundle, id) {
   }
 }
 },{}]},{},["../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.jsx"], null)
-//# sourceMappingURL=/src.78399e21.js.map
+//# sourceMappingURL=/client/src.78399e21.js.map

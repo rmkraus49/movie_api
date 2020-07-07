@@ -53,7 +53,7 @@ export class MainView extends React.Component {
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
-    window.open('/profile', '_self');
+    window.open('/client/profile', '_self');
   }
 
   logout() {
@@ -71,7 +71,7 @@ export class MainView extends React.Component {
     if (!movies) return <div className="main-view" />;
 
     return (
-      <Router>
+      <Router basename="/client">
         <Navbar expand="lg" className="navbar basic-nav">
           <Navbar.Brand as={Link} to="/" >
             Fantastic Films

@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const cors = require('cors');
+const path = require('path');
 const { check, validationResult } = require('express-validator');
 const Models = require('./models.js');
 
@@ -26,6 +27,10 @@ mongoose.connect(process.env.CONNECTION_URI, {
 // Middleware
 app.use(morgan('common'));
 app.use(express.static('public'));
+app.use('/client', express.static(path.join(__dirname, 'client', 'dist')));
+app.get('/client/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+});
 app.use(bodyParser.json());
 app.use((err, req, res, next) => {
   console.error(err.stack);

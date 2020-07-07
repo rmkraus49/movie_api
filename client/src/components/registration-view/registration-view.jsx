@@ -30,7 +30,7 @@ export function RegistrationView(props) {
             const data = response.data;
             console.log(data);
             props.onLoggedIn(data);
-            window.open('/', '_self');
+            window.open('/client', '_self');
           })
           .catch(e => {
             console.log('error logging in');
