@@ -51715,12 +51715,6 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.DirectorView = DirectorView;
-DirectorView.propTypes = {
-  director: PropTypes.shape({
-    Name: PropTypes.string.isRequired,
-    Bio: PropTypes.string.isRequired
-  })
-};
 },{"react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","../director-view/director-view.scss":"components/director-view/director-view.scss"}],"components/genre-view/genre-view.jsx":[function(require,module,exports) {
 "use strict";
 
@@ -51906,7 +51900,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         console.log('logout start');
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        window.open('/client', '_self');
+        window.open('/', '_self');
       }).catch(function (error) {
         console.log(error);
       });
@@ -52506,7 +52500,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50744" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56635" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
