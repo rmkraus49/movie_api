@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Button, Container, } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import '../director-view/director-view.scss';
 
 // eslint-disable-next-line import/prefer-default-export
