@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Button, Container, Col, Row } from 'react-bootstrap';
 import '../movie-view/movie-view.scss';
 
@@ -14,7 +15,6 @@ export class MovieView extends React.Component {
 
     if (!movie) return null;
     console.log(movie);
-
 
     return (
       <Container className="movie-detail">
@@ -52,8 +52,8 @@ MovieView.propTypes = {
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired,
-    Director: PropTypes.string.isRequired,
-    Genre: PropTypes.string.isRequired,
+    Director: PropTypes.shape.isRequired,
+    Genre: PropTypes.shape.isRequired,
   }),
   onClick: PropTypes.func,
 }

@@ -2,11 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Row, Container, Navbar, Nav, Card, Button } from 'react-bootstrap';
+import { Container, Navbar, Nav, Card, Button } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import MoviesList from '../movies-list/movies-list';
-import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
@@ -15,7 +14,9 @@ import { GenreView } from '../genre-view/genre-view';
 import { ProfileView } from '../profile-view/profile-view';
 import '../main-view/main-view.scss';
 
-export class MainView extends React.Component {
+import { setMovies, setUser } from '../../actions/actions'
+
+class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -66,9 +67,6 @@ export class MainView extends React.Component {
 
     let { movies } = this.props;
     let { user } = this.state;
-
-    // if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-    if (!movies) return <div className="main-view" />;
 
     return (
       <Router basename="/client">
@@ -177,7 +175,7 @@ let mapStateToProps = state => {
   return { movies: state.movies }
 }
 
-export default connect(mapStateToProps, { setMovies })(MainView);
+export default connect(mapStateToProps, { setMovies, setUser })(MainView);
 
 MainView.propTypes = {
   movies: PropTypes.array,

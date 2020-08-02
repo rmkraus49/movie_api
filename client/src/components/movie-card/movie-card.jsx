@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card, Col } from 'react-bootstrap';
-import Link from 'react-router-dom';
+import { Card, Col } from 'react-bootstrap';
 import '../movie-card/movie-card.scss';
 
 export class MovieCard extends React.Component {
@@ -32,5 +31,4 @@ MovieCard.propTypes = {
     ImagePath: PropTypes.string.isRequired,
     _id: PropTypes.string.isRequired,
   }).isRequired,
-  onClick: PropTypes.func.isRequired
 };
