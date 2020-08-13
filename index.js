@@ -8,6 +8,7 @@ const path = require('path');
 const { check, validationResult } = require('express-validator');
 const Models = require('./models.js');
 
+require('dotenv').config();
 require('./passport');
 
 const app = express();
