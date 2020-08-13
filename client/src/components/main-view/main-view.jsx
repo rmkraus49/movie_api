@@ -2,11 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Row, Container, Navbar, Nav, Card, Button } from 'react-bootstrap';
+import { Container, Navbar, Nav, Card, Button } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import MoviesList from '../movies-list/movies-list';
-import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Button, Container, Col, Row } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import '../movie-view/movie-view.scss';
 
 // eslint-disable-next-line import/prefer-default-export
