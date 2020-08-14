@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Container, Navbar, Nav, Card, Button } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
+import { setMovies } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
@@ -99,8 +100,8 @@ export class MainView extends React.Component {
                   <Card.Body>
                     <Card.Title>Welcome!</Card.Title>
                     <Card.Text>Please log in or register to continue.</Card.Text>
-                    <Button href={`/login`} variant="primary" className="welcome-button">Log in</Button>
-                    <Button href={`/register`} variant="primary" className="welcome-button">Register</Button>
+                    <Button href={`/client/login`} variant="primary" className="welcome-button">Log in</Button>
+                    <Button href={`/client/register`} variant="primary" className="welcome-button">Register</Button>
                   </Card.Body>
                 </Card >
               </Container>
@@ -120,8 +121,8 @@ export class MainView extends React.Component {
                   <Card.Body>
                     <Card.Title>Welcome!</Card.Title>
                     <Card.Text>Please log in or register to continue.</Card.Text>
-                    <Button href={`/login`} variant="primary" className="welcome-button">Log in</Button>
-                    <Button href={`/register`} variant="primary" className="welcome-button">Register</Button>
+                    <Button href={`/client/login`} variant="primary" className="welcome-button">Log in</Button>
+                    <Button href={`/client/register`} variant="primary" className="welcome-button">Register</Button>
                   </Card.Body>
                 </Card >
               </Container>

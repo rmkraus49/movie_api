@@ -38,7 +38,7 @@ export function LoginView(props) {
         <Button variant="primary" type="submit" onClick={handleSubmit}>
           Submit
         </Button>
-        <Button variant="secondary" type="submit" href="/">
+        <Button variant="secondary" type="submit" href="/client">
           Cancel
         </Button>
       </Form>

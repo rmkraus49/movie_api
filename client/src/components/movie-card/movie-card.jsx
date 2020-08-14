@@ -11,13 +11,13 @@ export class MovieCard extends React.Component {
     return (
       <Col xs={6} md={4} xl={3}>
         <Card style={{ width: '16rem' }} className="movie-card">
-          <a href={`/movies/${movie._id}`}>
-            <Card.Img variant="top" src={movie.ImagePath} href={`/movies/${movie._id}`} />
+          <a href={`/client/movies/${movie._id}`}>
+            <Card.Img variant="top" src={movie.ImagePath} href={`/client/movies/${movie._id}`} />
           </a>
           <Card.Body>
             <Card.Title>{movie.Title}</Card.Title>
             <Card.Text>{movie.Description}</Card.Text>
-            <Card.Link href={`/movies/${movie._id}`}>Details</Card.Link>
+            <Card.Link href={`/client/movies/${movie._id}`}>Details</Card.Link>
           </Card.Body>
         </Card>
       </Col >

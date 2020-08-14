@@ -24,7 +24,7 @@ export class DirectorView extends React.Component {
             <Card.Text>{director.Bio}</Card.Text>
           </Card.Body>
           <Card.Footer>
-            <Button href={`/`} className="close-button" variant="secondary">Close</Button>
+            <Button href={`/client`} className="close-button" variant="secondary">Close</Button>
           </Card.Footer>
         </Card >
       </Container>

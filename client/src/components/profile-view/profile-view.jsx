@@ -70,7 +70,7 @@ export class ProfileView extends React.Component {
     )
       .then(() => {
         localStorage.setItem('user', username);
-        window.open('/profile', '_self');
+        window.open('/client/profile', '_self');
       })
       .catch(() => {
         console.log('error updating user');
