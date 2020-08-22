@@ -29,7 +29,7 @@ mongoose.connect(process.env.CONNECTION_URI, {
 app.use(morgan('common'));
 app.use(express.static('public'));
 app.use('/client', express.static(path.join(__dirname, 'client', 'dist')));
-app.get('/client/*', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
 app.use(bodyParser.json());
@@ -39,7 +39,7 @@ app.use((err, req, res, next) => {
 });
 
 // CORS
-const allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', '*'];
+const allowedOrigins = ['*'];
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
